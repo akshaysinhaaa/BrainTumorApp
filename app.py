@@ -4,12 +4,13 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivymd.uix.filemanager import MDFileManager
 import os
-
+from brain_tumor_cnn import predi
 Window.size = (400, 500)
 
 
 
 kv = """
+
 
 BoxLayout:
     orientation: 'vertical'
@@ -29,7 +30,10 @@ BoxLayout:
             on_release:app.file_manager_open()
             pos_hint:{"center_x": 0.5, "center_y": 0.2}
 
+
 """
+
+
 class App(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -44,7 +48,8 @@ class App(MDApp):
 
     def select_path(self, path: str):
         self.exit_manager()
-        print(path)
+        print(predi(path))
+
 
     def exit_manager(self, *args):
         self.manager_open = False
