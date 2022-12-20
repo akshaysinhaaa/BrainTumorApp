@@ -8,7 +8,7 @@ Original file is located at
 """
 
 import numpy as np
-import os 
+import os
 import matplotlib.pyplot as plt
 import math
 import shutil
@@ -38,9 +38,9 @@ def segregrate(path,ratio):
 
   for i in os.listdir(Root):
     os.makedirs("./"+path+"/"+i)
-    
 
-    for img in np.random.choice(a = os.listdir(os.path.join(Root, i)) , 
+
+    for img in np.random.choice(a = os.listdir(os.path.join(Root, i)) ,
                                  size = (math.floor(ratio*numimgs[i])-2),
                                  replace = False):
       O = os.path.join(Root,i,img)
@@ -98,7 +98,7 @@ model.add(Dense(units = 32, activation = 'relu'))
 # model.add(Dropout(rate = 0.3))
 
 model.add(Dense(units = 6, activation = 'softmax'))
- 
+
 model.summary()
 model.compile(optimizer = 'adam', loss = keras.losses.categorical_crossentropy, metrics = "accuracy")
 
@@ -134,9 +134,6 @@ model = load_model("model.h5")
 
 acc = model.evaluate(TestData)[1]
 print(f"Accuracy of model is {acc*100}%")
-#
-# TrainData.class_indices
-#
 from tensorflow.keras.utils import load_img, img_to_array
 from keras.applications.mobilenet import MobileNet
 from keras.models import Model
@@ -163,7 +160,7 @@ arr = [eas,modc]
 
 model.compile(optimizer = 'adam', loss = keras.losses.categorical_crossentropy, metrics = "accuracy")
 
-# trdat = model.fit(x= TrainData, steps_per_epoch = 30, epochs = 40, verbose = 1, validation_data = ValData ,callbacks=arr)
+trdat = model.fit(x= TrainData, steps_per_epoch = 30, epochs = 40, verbose = 1, validation_data = ValData ,callbacks=arr)
 #
 # h = trdat.history
 # plt.plot(h['accuracy'])
@@ -216,4 +213,3 @@ def predi(path):
     return "Metastatic"
   else:
     pass
-print(TrainData.class_indices)

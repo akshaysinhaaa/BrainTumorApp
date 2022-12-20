@@ -4,10 +4,8 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivymd.uix.filemanager import MDFileManager
 import os
-from brain_tumor_cnn import predi
+# from brain_tumor_cnn import predi
 Window.size = (400, 500)
-
-
 
 kv = """
 
@@ -20,7 +18,7 @@ BoxLayout:
         
     MDFloatLayout:
         MDLabel:
-            text:"Bennett University has been set up at Greater Noida and commenced operations on 08 Aug 2016, initially with B.Tech and MBA programs. With a focus on giving students a premium learning experience, in an immersive environment at a campus designed by the internationally renowned RSP Architects, coupled with enhanced use of technology to meet students aspirations."
+            text:"In general, diagnosing a brain tumor usually begins with magnetic resonance imaging (MRI). Once MRI shows that there is a tumor in the brain, the most common way to determine the type of brain tumor is to look at the results from a sample of tissue after a biopsy or surgery"
             size_hint_x:(0.9)
             font_style:"Body1"
             pos_hint:{"center_x": 0.5, "center_y": 0.5}
@@ -48,8 +46,8 @@ class App(MDApp):
 
     def select_path(self, path: str):
         self.exit_manager()
-        print(predi(path))
-
+        # print(predi(path))
+        print(path)
 
     def exit_manager(self, *args):
         self.manager_open = False
@@ -63,7 +61,7 @@ class App(MDApp):
 
     def build(self):
         screen = Screen()
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         return Builder.load_string(kv)
 
 
